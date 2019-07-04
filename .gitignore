@@ -1,0 +1,11 @@
+*.cover
+*.log
+.DS_Store
+.Python
+.cache
+.idea/
+.vscode/
+__pycache__/
+build/
+settings.py
+models/
