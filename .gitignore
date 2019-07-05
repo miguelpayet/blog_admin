@@ -7,5 +7,5 @@
 .vscode/
 __pycache__/
 build/
-settings.py
-models/
+blog_admin/settings.py
+app/models/
