@@ -8,4 +8,4 @@
 __pycache__/
 build/
 blog_admin/settings.py
-app/models/
+app/models
