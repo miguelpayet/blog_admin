@@ -3,10 +3,10 @@ from django.forms import ModelChoiceField
 from django.forms import ModelForm
 from django.forms import RadioSelect
 
+from app.models import Coleccion
 from app.models import Entry
 from app.models import Foto
-from app.models import Tag
-from app.models import TagFoto
+from app.models import TagEntry
 from app.models import Tipo
 
 
@@ -19,7 +19,7 @@ admin.site.register(Tipo, TipoAdmin)
 
 
 class TagInline(admin.TabularInline):
-    model = Tag
+    model = TagEntry
     fields = ('tag',)
     extra = 0
 
@@ -46,15 +46,16 @@ class EntryAdmin(admin.ModelAdmin):
 admin.site.register(Entry, EntryAdmin)
 
 
-class TagFotoInline(admin.TabularInline):
-    model = TagFoto
-    fields = ('tag',)
+class FotoInline(admin.TabularInline):
+    list_display = ('idfoto', 'handle')
+    model = Foto
     extra = 0
 
 
-class FotoAdmin(admin.ModelAdmin):
-    list_display = ('idfoto', 'handle')
-    inlines = (TagFotoInline,)
+class ColeccionAdmin(admin.ModelAdmin):
+    fields = ('nombre', 'prompt', 'mensaje_exito', 'mensaje_falla', 'nombre_token',)
+    inlines = (FotoInline,)
+    list_display = ('nombre',)
 
 
-admin.site.register(Foto, FotoAdmin)
+admin.site.register(Coleccion, ColeccionAdmin)
